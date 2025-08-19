@@ -1,0 +1,23 @@
+<%- include('partials/head') %>
+
+
+</head>
+<body>
+
+  <%- include('partials/nav') %>
+  
+    <main class="container mx-auto px-8 py-2 mt-10">
+    <form action="add-home" method= "POST" class="flex flex-col justify-center items-center shadow-lg max-w-xl mx-auto px-6 py-8 gap-5 mt-10">
+       <h1 class="text-2xl font-semibold">Register your Home OnAirbnb:</h1>
+
+    <input class="border px-4 w-full py-1 focus:ring-2 focus:outline-none focus:ring-red-500" type= "text" name="houseName" placeholder="Enter House Name" />
+    <input class=" border px-4 w-full py-1 focus:ring-2 focus:outline-none focus:ring-red-500" type= "text" name="price" placeholder="Price Per Night" />
+    <input class=" border px-4 w-full py-1 focus:ring-2 focus:outline-none focus:ring-red-500" type= "text" name="location" placeholder="Enter Location" />
+    <input class=" border px-4  w-full py-1 focus:ring-2 focus:outline-none focus:ring-red-500" type= "text" name="rating" placeholder="Enter Rating" />
+    <input class=" border px-4 w-full py-1 focus:ring-2 focus:outline-none focus:ring-red-500" type= "text" name="imageURL" placeholder="Enter image URL" />
+        <input type="submit" class="bg-red-500 px-4 w-full py-1  text-white rounded-lg"/>
+        </form>
+    </main>
+    
+</body>
+</html>

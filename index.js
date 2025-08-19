@@ -6,6 +6,9 @@ const rootDir = require("./utils/pathUtils");
 
 const app = express();
 
+app.set("view engine", "ejs")
+app.set("views", "views")
+
 // Middleware logger
 app.use("/", (req, res, next) => {
   console.log(req.url, req.method);
@@ -25,7 +28,7 @@ app.use(express.static(path.join(rootDir, "public")));
 
 // 404 page
 app.use((req, res, next) => {
-  res.sendFile(path.join(rootDir, "views", "404.html"));
+  res.render('404', {pageTitle: 'Page Not Found', currentPage: "404"});
 });
 
 const PORT = 3002;

@@ -1,0 +1,18 @@
+    <header class="bg-red-700 text-black p-4 shadow-md">
+      <nav class="container mx-auto flex gap-10 justify-between items-center">
+        <ul class="flex space-x-4">
+          <li>
+            <a
+              href="/"
+              class= " <%= currentPage === 'Home' ? 'bg-red-400 ': 'hover:bg-red-400 ' %> transition-all duration-75 py-2 px-4 rounded-lg"
+              >Go to Home</a
+            >
+            <a
+              href="add-home"
+              class="<%= currentPage === 'addHome' ? 'bg-red-400 ': 'hover:bg-red-400 ' %>  transition-all duration-75 py-2 px-4 rounded-lg"
+              >Add Home
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
