@@ -4,15 +4,49 @@
           <li>
             <a
               href="/"
-              class= " <%= currentPage === 'Home' ? 'bg-red-400 ': 'hover:bg-red-400 ' %> transition-all duration-75 py-2 px-4 rounded-lg"
-              >Go to Home</a
+              class= " <%= currentPage === 'index' ? 'bg-red-400 ': 'hover:bg-red-400 ' %> transition-all duration-75 py-2 px-4 rounded-lg"
+              >Airbnb</a
             >
+          </li>
+          <li>
             <a
-              href="add-home"
+              href="/homes"
+              class= " <%= currentPage === 'Home' ? 'bg-red-400 ': 'hover:bg-red-400 ' %> transition-all duration-75 py-2 px-4 rounded-lg"
+              >Home-list</a
+            >
+          </li>
+          <li>
+              <a
+              href="/favourites"
+              class="<%= currentPage === 'favourites' ? 'bg-red-400 ': 'hover:bg-red-400 ' %>  transition-all duration-75 py-2 px-4 rounded-lg"
+              >Favourites
+               </a>
+          </li>
+          <li>
+              <a
+              href="/bookings"
+              class="<%= currentPage === 'bookings' ? 'bg-red-400 ': 'hover:bg-red-400 ' %>  transition-all duration-75 py-2 px-4 rounded-lg"
+              >Bookings
+               </a>
+          </li>
+          <li>
+              <a
+              href="/host/host-home-list"
+              class="<%= currentPage === 'host-home' ? 'bg-red-400 ': 'hover:bg-red-400 ' %>  transition-all duration-75 py-2 px-4 rounded-lg"
+              >Host Home
+               </a>
+          </li>
+          <li>
+              <a
+              href="/host/add-home"
               class="<%= currentPage === 'addHome' ? 'bg-red-400 ': 'hover:bg-red-400 ' %>  transition-all duration-75 py-2 px-4 rounded-lg"
               >Add Home
-            </a>
+               </a>
           </li>
+
+
+
+  
         </ul>
       </nav>
     </header>

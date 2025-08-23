@@ -1,15 +1,15 @@
-<%- include('partials/head') %>
+<%- include('../partials/head') %>
   </head>
   <body>
-  <%- include('partials/nav') %>
+  <%- include('../partials/nav') %>
     <main
-      class="container mx-auto  shadow-lg rounded-lg p-8 mt-10 max-w-xl"
+      class="container mx-auto  shadow-lg rounded-lg p-8 mt-10 max-w-6xl"
     >
       <h2 class="text-3xl text-red-500 font-bold text-center mb-6">
         Here are your Registered homes:
       </h2>
 <!-- Exact Card Design - Clean and Minimal -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 p-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-6">
   <% registerHomes.forEach(home => { %>
     <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden cursor-pointer">
       
@@ -47,13 +47,16 @@
           </div>
           
           <div class="flex items-center space-x-1">
-            <svg class="w-4 h-4 text-black fill-current" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 text-yellow-500 fill-current" viewBox="0 0 24 24">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
             </svg>
             <span class="text-sm font-medium text-gray-900"><%= home.rating %></span>
             <span class="text-sm text-gray-500">(<%= Math.floor(Math.random() * 50) + 10 %>)</span>
           </div>
         </div>
+      
+          <button class="bg-green-300 p-2 rounded-lg">Book</button>
+        
         
       
       </div>

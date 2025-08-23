@@ -1,8 +1,9 @@
 const path = require("path");
 const express = require("express");
-const userRouter = require("./routes/userRouter");
-const {hostRouter} = require("./routes/hostRouter"); 
+const storeRouter = require("./routes/storeRouter");
+const hostRouter = require("./routes/hostRouter"); 
 const rootDir = require("./utils/pathUtils");
+const { pageNotFound } = require("../airbnb-10/controller/error");
 
 const app = express();
 
@@ -20,16 +21,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-app.use( hostRouter);
-app.use(userRouter);
+app.use( "/host", hostRouter);
+app.use(storeRouter);
 
 // Static files
 app.use(express.static(path.join(rootDir, "public")));
 
 // 404 page
-app.use((req, res, next) => {
-  res.render('404', {pageTitle: 'Page Not Found', currentPage: "404"});
-});
+app.use(pageNotFound);
 
 const PORT = 3002;
 app.listen(PORT, () => {
