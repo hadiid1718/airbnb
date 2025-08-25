@@ -3,6 +3,8 @@ const path = require("path")
 const rootDir = require("../utils/pathUtils")
 //fake dataase
 
+     const homeDataFile = path.join(rootDir, 'data', 'Home.json')
+
 module.exports = class Home{
     constructor(houseName, price, location, rating, imageURL){
       this.houseName = houseName;
@@ -12,9 +14,9 @@ module.exports = class Home{
       this.imageURL = imageURL;
     }
     save() {
+      this.id = Math.random().toString()
       Home.fetchAll(registerHomes => {
      registerHomes.push(this)
-     const homeDataFile = path.join(rootDir, 'data', 'Home.json')
      fs.writeFile(homeDataFile, JSON.stringify(registerHomes), error=> {
        console.log("Data Concluded", error)
      })
@@ -22,7 +24,6 @@ module.exports = class Home{
 
     }
     static fetchAll(callback){
-     const homeDataFile = path.join(rootDir, 'data', 'Home.json')
       const fileContent = fs.readFile(homeDataFile, (err,data)=> {
       console.log("File read:" , err, data)
       if(!err) {
@@ -31,6 +32,12 @@ module.exports = class Home{
       } else{
       callback([]) 
       }
+      })
+    }
+    static findById(homeId, callback){
+      this.fetchAll(homes => {
+        const home = homes.find(home => home.id === homeId)
+        callback(home)
       })
     }
 }

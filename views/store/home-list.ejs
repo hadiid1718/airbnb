@@ -1,68 +1,45 @@
 <%- include('../partials/head') %>
   </head>
   <body>
-  <%- include('../partials/nav') %>
-    <main
-      class="container mx-auto  shadow-lg rounded-lg p-8 mt-10 max-w-6xl"
-    >
-      <h2 class="text-3xl text-red-500 font-bold text-center mb-6">
-        Here are your Registered homes:
-      </h2>
-<!-- Exact Card Design - Clean and Minimal -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-6">
-  <% registerHomes.forEach(home => { %>
-    <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden cursor-pointer">
-      
-      <!-- Image Section -->
-      <div class="relative h-48 bg-gray-100">
-        <img src="<%= home.imageURL %>" 
-             alt="<%= home.houseName %>" 
-             class="w-full h-full object-cover"
-             onerror="this.src='https://via.placeholder.com/300x200/f3f4f6/9ca3af?text=No+Image'">
-        
-        <!-- Heart Icon - Top Right -->
-        <button class="absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:shadow-md transition-shadow duration-200">
-          <svg class="w-4 h-4 text-gray-400 hover:text-red-500 transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-          </svg>
-        </button>
-      </div>
-      
-      <!-- Content Section -->
-      <div class="p-4">
-        <!-- House Name -->
-        <h3 class="text-base font-semibold text-gray-900 mb-1 capitalize">
-          <%= home.houseName %>
-        </h3>
-        
-        <!-- Location -->
-        <p class="text-sm text-gray-500 mb-2 capitalize">
-          <%= home.location %>
-        </p>
-        
-        <!-- Price and Rating -->
-        <div class="flex items-center justify-between mb-4">
-          <div class="text-base font-semibold text-red-600">
-            PKR <%= home.price %> / night
-          </div>
+      <%- include('../partials/nav') %>
+      <main class="container mx-auto bg-white shadow-lg rounded-lg p-8 mt-10 max-w-6xl">
+          <h2 class="text-3xl text-red-500 font-bold text-center mb-6">
+              Details of <%= home.name %>
+          </h2>
           
-          <div class="flex items-center space-x-1">
-            <svg class="w-4 h-4 text-yellow-500 fill-current" viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-            </svg>
-            <span class="text-sm font-medium text-gray-900"><%= home.rating %></span>
-            <span class="text-sm text-gray-500">(<%= Math.floor(Math.random() * 50) + 10 %>)</span>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div class="rounded-lg overflow-hidden">
+                  <img src="<%= home.photoUrl %>" alt="<%= home.name %>" class="w-full h-96 object-cover">
+              </div>
+              
+              <div class="space-y-6">
+                  <div class="border-b pb-4">
+                      <h3 class="text-2xl font-semibold mb-2">Description</h3>
+                      <p class="text-gray-600"><%= home.description %></p>
+                  </div>
+
+                  <div class="border-b pb-4">
+                      <h3 class="text-2xl font-semibold mb-2">Location</h3>
+                      <p class="text-gray-600"><%= home.location %></p>
+                  </div>
+                  
+                  <div class="border-b pb-4">
+                      <h3 class="text-2xl font-semibold mb-2">Price</h3>
+                      <p class="text-green-600 text-xl font-bold">$<%= home.price %> / night</p>
+                  </div>
+                  
+                  <div class="border-b pb-4">
+                      <h3 class="text-2xl font-semibold mb-2">Rating</h3>
+                      <div class="flex items-center">
+                          <span class="text-yellow-400 text-xl">★</span>
+                          <span class="ml-2 text-lg"><%= home.rating %> / 5</span>
+                      </div>
+                  </div>
+                  <div class="mt-2">
+                    <%- include('../partials/favourite') %>
+                  </div>
+              </div>
           </div>
-        </div>
-      
-          <button class="bg-green-300 p-2 rounded-lg">Book</button>
-        
-        
-      
-      </div>
-    </div>
-  <% }) %>
-</div>
-    </main>
+      </main>
   </body>
 </html>
