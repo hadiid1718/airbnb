@@ -1,45 +1,68 @@
 <%- include('../partials/head') %>
-  </head>
-  <body>
-      <%- include('../partials/nav') %>
-      <main class="container mx-auto bg-white shadow-lg rounded-lg p-8 mt-10 max-w-6xl">
-          <h2 class="text-3xl text-red-500 font-bold text-center mb-6">
-              Details of <%= home.name %>
-          </h2>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div class="rounded-lg overflow-hidden">
-                  <img src="<%= home.photoUrl %>" alt="<%= home.name %>" class="w-full h-96 object-cover">
-              </div>
-              
-              <div class="space-y-6">
-                  <div class="border-b pb-4">
-                      <h3 class="text-2xl font-semibold mb-2">Description</h3>
-                      <p class="text-gray-600"><%= home.description %></p>
-                  </div>
+</head>
 
-                  <div class="border-b pb-4">
-                      <h3 class="text-2xl font-semibold mb-2">Location</h3>
-                      <p class="text-gray-600"><%= home.location %></p>
-                  </div>
-                  
-                  <div class="border-b pb-4">
-                      <h3 class="text-2xl font-semibold mb-2">Price</h3>
-                      <p class="text-green-600 text-xl font-bold">$<%= home.price %> / night</p>
-                  </div>
-                  
-                  <div class="border-b pb-4">
-                      <h3 class="text-2xl font-semibold mb-2">Rating</h3>
-                      <div class="flex items-center">
-                          <span class="text-yellow-400 text-xl">★</span>
-                          <span class="ml-2 text-lg"><%= home.rating %> / 5</span>
-                      </div>
-                  </div>
-                  <div class="mt-2">
-                    <%- include('../partials/favourite') %>
-                  </div>
+<body>
+  <%- include('../partials/nav') %>
+
+  <main class="container mx-auto bg-white shadow-lg rounded-lg p-8 mt-10 max-w-6xl">
+
+    <h2 class="text-3xl text-red-500 font-bold text-center mb-8">
+      Available Homes
+    </h2>
+
+    <% if (registerHomes && registerHomes.length > 0) { %>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+        <% registerHomes.forEach(home => { %>
+          <div class="border rounded-lg overflow-hidden shadow hover:shadow-xl transition">
+
+            <img
+              src="<%= home.imageURL %>"
+              alt="<%= home.name %>"
+              class="w-full h-48 object-cover"
+            >
+
+
+            <div class="p-4 space-y-2">
+              <h3 class="text-xl font-semibold"><%= home.name %></h3>
+              <p class="text-gray-500 text-sm"><%= home.location %></p>
+
+              <p class="text-green-600 font-bold">
+                $<%= home.price %> / night
+              </p>
+
+              <div class="flex items-center justify-between mt-4">
+              <div class="flex flex-col justify-center items-center">
+                      <a
+                  href="/homes/<%= home.id %>"
+                  class="text-red-500 font-semibold hover:underline"
+                >
+                  View Details
+                </a>
+           <%- include('../partials/favourite', {home: home}) %>
+                
               </div>
+
+                <span class="text-yellow-400">
+                  ★ <%= home.rating %>
+                </span>
+              </div>
+            </div>
+
           </div>
-      </main>
-  </body>
+        <% }) %>
+
+      </div>
+
+    <% } else { %>
+
+      <p class="text-center text-gray-500 text-lg">
+        No homes available right now.
+      </p>
+
+    <% } %>
+
+  </main>
+</body>
 </html>
